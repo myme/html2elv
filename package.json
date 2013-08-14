@@ -2,9 +2,11 @@
   "name": "html2elv",
   "version": "0.0.0",
   "description": "Convert HTML to Elvis",
-  "main": "index.js",
   "directories": {
     "test": "test"
+  },
+  "bin": {
+      "html2elv": "./bin/html2elv.js"
   },
   "dependencies": {
     "cheerio": "~0.12.1",
