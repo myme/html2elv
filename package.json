@@ -1,0 +1,30 @@
+{
+  "name": "html2elv",
+  "version": "0.0.0",
+  "description": "Convert HTML to Elvis",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "cheerio": "~0.12.1",
+    "optimist": "~0.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/myme/html2elv.git"
+  },
+  "author": {
+      "name": "Martin Øinæs Myrseth",
+      "email": "myrseth@gmail.com"
+  },
+  "license": "BSD",
+  "gitHead": "55f2768c03c5c89c8ae3a042cebeaae31e9c657b",
+  "bugs": {
+    "url": "https://github.com/myme/html2elv/issues"
+  }
+}
