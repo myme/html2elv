@@ -2,6 +2,7 @@ var nodes = require('../lib/nodes');
 
 require('should');
 
+
 describe('Tag', function () {
   describe('.toJavaScript', function () {
     it('should use "el" by default', function () {
@@ -12,8 +13,17 @@ describe('Tag', function () {
       var node = new nodes.Tag('span');
       node.toJavaScript({ createEl: 'foo' }).should.equal("foo('span')");
     });
+    it('can change quote style through options', function () {
+      var node = new nodes.Tag('span');
+      node.toJavaScript({ quotes: '"' }).should.equal('el("span")');
+    });
+    it('passes quotes options to Text child node', function () {
+      var node = new nodes.Tag('span', null, [ new nodes.Text('foo') ]);
+      node.toJavaScript({ quotes: '"' }).should.equal('el("span", "foo")');
+    });
   });
 });
+
 
 describe('Text', function () {
   describe('.toJavaScript', function () {
