@@ -6,23 +6,31 @@
     "test": "test"
   },
   "bin": {
-      "html2elv": "./bin/html2elv.js"
+    "html2elv": "./bin/html2elv.js"
   },
   "dependencies": {
     "cheerio": "~0.12.1",
     "optimist": "~0.6.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
+    "grunt-contrib-jshint": "~0.6.2",
+    "grunt-contrib-watch": "~0.5.1",
+    "grunt-mocha-test": "~0.6.3",
+    "should": "~1.2.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "grunt --force test watch",
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/myme/html2elv.git"
   },
   "author": {
-      "name": "Martin Øinæs Myrseth",
-      "email": "myrseth@gmail.com"
+    "name": "Martin Øinæs Myrseth",
+    "email": "myrseth@gmail.com"
   },
   "license": "BSD",
   "gitHead": "55f2768c03c5c89c8ae3a042cebeaae31e9c657b",
