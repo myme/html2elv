@@ -13,7 +13,7 @@ if (argv.help) {
   process.exit(0);
 }
 
-var stream, data = '';
+var stream;
 if (!argv._.length) {
   stream = process.stdin;
   stream.resume();
