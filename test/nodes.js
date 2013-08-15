@@ -12,5 +12,9 @@ describe('Text', function () {
       var node = new nodes.Text("foo'bar");
       node.toJavaScript().should.equal("'foo\\'bar'");
     });
+    it('can change quote types through options', function () {
+      var node = new nodes.Text('foobar');
+      node.toJavaScript({ quotes: '"' }).should.equal('"foobar"');
+    });
   });
 });
