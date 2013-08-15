@@ -23,10 +23,6 @@ if (!argv._.length) {
 
 stream.setEncoding('utf8');
 
-stream.on('data', function (chunk) {
-  data += chunk;
-});
-
-stream.on('end', function () {
-  console.log(new Parser().parse(data).toJavaScript());
+new Parser().parseStream(stream, function (err, data) {
+  console.log(data.toJavaScript());
 });
