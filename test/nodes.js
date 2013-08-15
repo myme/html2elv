@@ -2,6 +2,19 @@ var nodes = require('../lib/nodes');
 
 require('should');
 
+describe('Tag', function () {
+  describe('.toJavaScript', function () {
+    it('should use "el" by default', function () {
+      var node = new nodes.Tag('span');
+      node.toJavaScript().should.equal("el('span')");
+    });
+    it('can change create element function name', function () {
+      var node = new nodes.Tag('span');
+      node.toJavaScript({ createEl: 'foo' }).should.equal("foo('span')");
+    });
+  });
+});
+
 describe('Text', function () {
   describe('.toJavaScript', function () {
     it('should surround text value in single quotes', function () {
