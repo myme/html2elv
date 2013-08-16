@@ -3,8 +3,18 @@
 var fs = require('fs');
 var optimist = require('optimist')
   .usage('Usage: $0 [file]')
-  .describe('help', 'Display options')
-  .alias('help', 'h');
+  .option('help', {
+    alias: 'h',
+    describe: 'Display options'
+  })
+  .option('create-element', {
+    describe: 'Name of the create element alias',
+    default: 'el'
+  })
+  .option('quotes', {
+    describe: 'Type of quotes used',
+    default: "'"
+  });
 var argv = optimist.argv;
 var Parser = require('../lib/parser').Parser;
 
@@ -24,5 +34,8 @@ if (!argv._.length) {
 stream.setEncoding('utf8');
 
 new Parser().parseStream(stream, function (err, data) {
-  console.log(data.toJavaScript());
+  console.log(data.toJavaScript({
+    createEl: argv['create-element'],
+    quotes: argv.quotes
+  }));
 });
