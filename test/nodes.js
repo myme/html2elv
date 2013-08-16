@@ -32,6 +32,11 @@ describe('Tag', function () {
       var node = new nodes.Tag('span');
       node.toJavaScript({ quotes: '"' }).should.equal('el("span")');
     });
+    it('uses options quotes for attributes', function () {
+      var node = new nodes.Tag('a', { href: 'http://example.com' });
+      var output = node.toJavaScript({ quotes: '"' }).replace(/\s+/g, ' ');
+      output.should.equal('el("a", { href: "http://example.com" })');
+    });
     it('passes quotes options to Text child node', function () {
       var node = new nodes.Tag('span', null, [ new nodes.Text('foo') ]);
       node.toJavaScript({ quotes: '"' }).should.equal('el("span", "foo")');
