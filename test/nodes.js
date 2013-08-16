@@ -39,5 +39,9 @@ describe('Text', function () {
       var node = new nodes.Text('foobar');
       node.toJavaScript({ quotes: '"' }).should.equal('"foobar"');
     });
+    it('should escape double quotes when used', function () {
+      var node = new nodes.Text('foo"bar');
+      node.toJavaScript({ quotes: '"' }).should.equal('"foo\\"bar"');
+    });
   });
 });
