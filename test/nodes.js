@@ -37,6 +37,11 @@ describe('Tag', function () {
       var output = node.toJavaScript({ quotes: '"' }).replace(/\s+/g, ' ');
       output.should.equal('el("a", { href: "http://example.com" })');
     });
+    it('quotes dashed attribute names', function () {
+      var node = new nodes.Tag('span', { 'data-foo': 'bar' });
+      var output = node.toJavaScript({ quotes: '"' }).replace(/\s+/g, ' ');
+      output.should.equal('el("span", { "data-foo": "bar" })');
+    });
     it('escapes attribute values', function () {
       var node = new nodes.Tag('span', { style: 'background: url("/example.png")' });
       var output = node.toJavaScript({ quotes: '"' }).replace(/\s+/g, ' ');
