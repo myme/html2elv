@@ -3,6 +3,21 @@ var nodes = require('../lib/nodes');
 require('should');
 
 
+describe('List', function () {
+  describe('.toJavaScript', function () {
+    it('passes options to child nodes', function () {
+      var node = new nodes.List([
+        new nodes.Tag('span', null, [ new nodes.Text('foo') ])
+      ]);
+      node.toJavaScript({
+        createEl: 'foo',
+        quotes: '"'
+      }).should.equal('foo("span", "foo")');
+    });
+  });
+});
+
+
 describe('Tag', function () {
   describe('.toJavaScript', function () {
     it('should use "el" by default', function () {
