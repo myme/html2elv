@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var fs = require('fs');
+var path = require('path');
 var optimist = require('optimist')
   .usage('Usage: $0 [file]')
   .option('help', {
@@ -14,12 +15,23 @@ var optimist = require('optimist')
   .option('quotes', {
     describe: 'Type of quotes used',
     default: "'"
+  })
+  .option('version', {
+    alias: 'v',
+    describe: 'Display version information'
   });
 var argv = optimist.argv;
 var Parser = require('../lib/parser').Parser;
 
 if (argv.help) {
   optimist.showHelp();
+  process.exit(0);
+}
+
+if (argv.version) {
+  var pkg_path = path.normalize(path.join(__dirname, '..', 'package.json'));
+  var pkg = JSON.parse(fs.readFileSync(pkg_path));
+  console.log(pkg.name + ': v' + pkg.version);
   process.exit(0);
 }
 
